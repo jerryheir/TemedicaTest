@@ -1,0 +1,39 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Drug {
+  id: Int!
+  name: String!
+  diseases: [String!]
+  description: String!
+  released: String!
+}
+
+type Query {
+  drugs(input: String): [Drug!]!
+}
+
+type Mutation {
+  createDrug(data: DrugInput!): Drug!
+  updateDrug(data: DrugUpdateInput!, input: IdInput!): Drug!
+  deleteDrug(input: IdInput!): String!
+}
+
+input DrugInput {
+  name: String!
+  diseases: [String!] = []
+  description: String!
+  released: String!
+}
+
+input DrugUpdateInput {
+  name: String
+  diseases: [String!]
+  description: String
+  released: String
+}
+
+input IdInput {
+  id: Float!
+}

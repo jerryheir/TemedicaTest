@@ -1,0 +1,33 @@
+version: "3.3"
+services:
+  db:
+    platform: linux/x86_64
+    image: mysql:8.0
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: "${DATABASE_PASSWORD}"
+      MYSQL_DATABASE: "${DATABASE_NAME}"
+      MYSQL_ROOT_USER: "${DATABASE_USERNAME}"
+      MYSQL_PASSWORD: "${DATABASE_PASSWORD}"
+    networks:
+      - app-network
+  backend:
+    build: . # Build image from local Dockerfile
+    environment:
+      DATABASE_HOST: db
+      DATABASE_PORT: "${DATABASE_PORT}"
+      DATABASE_USERNAME: "${DATABASE_USERNAME}"
+      DATABASE_PASSWORD: "${DATABASE_PASSWORD}"
+      DATABASE_NAME: "${DATABASE_NAME}"
+      WAIT_HOSTS: mysql:3306
+    command: ["./wait-for-it/wait-for-it.sh", "db:3306", "--", "yarn",  "start:prod"]
+    ports:
+      - "4000:4000"
+    depends_on:
+      - db # Wait until database service is loaded
+    networks:
+      - app-network
+networks: # Specify the network for bridging
+  app-network:
+    driver: bridge

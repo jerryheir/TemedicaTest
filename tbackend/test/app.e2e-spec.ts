@@ -21,4 +21,7 @@ describe('ControllerTest (e2e)', () => {
   it('/v1/drugs (POST)', () => {
     return request(app.getHttpServer()).post('/v1/drugs').expect(400);
   });
+  it('/v1/drugs (PUT)', () => {
+    return request(app.getHttpServer()).put('/v1/drugs').expect(400);
+  });
 });

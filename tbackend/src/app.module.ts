@@ -21,6 +21,7 @@ import { Drug } from './drugs/drugs.entity';
         database: config.get('DATABASE_NAME'),
         entities: [Drug],
         synchronize: true,
+        keepConnectionAlive: true
       }),
       inject: [ConfigService],
     }),

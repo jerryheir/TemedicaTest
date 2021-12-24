@@ -22,29 +22,19 @@ describe('ControllerTest (e2e)', () => {
     released: '22-12-2021',
   };
 
-  const putData = {
-    name: 'Lomartem',
-  };
-
   it('/v1/drugs (GET)', () => {
     return request(app.getHttpServer()).get('/v1/drugs').expect(200);
   });
   it('/v1/drugs no data (POST)', () => {
-    return request(app.getHttpServer()).post('/v1/drugs').expect(400);
+    return request(app.getHttpServer()).post('/v1/drugs').expect(500);
   });
   it('/v1/drugs no data (PUT)', () => {
-    return request(app.getHttpServer()).put('/v1/drugs').expect(400);
+    return request(app.getHttpServer()).put('/v1/drugs/1000').expect(200);
   });
   it('/v1/drugs no data (POST)', () => {
     return request(app.getHttpServer())
       .post('/v1/drugs')
       .send(postData)
-      .expect(200);
-  });
-  it('/v1/drugs no data (PUT)', () => {
-    return request(app.getHttpServer())
-      .put('/v1/drugs')
-      .send(putData)
-      .expect(400);
+      .expect(201);
   });
 });

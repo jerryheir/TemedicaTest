@@ -20,6 +20,11 @@ to access the graphql playground, go to `http://localhost:4000/graphql` after ru
 
 To access the RESTful apis, go to `http://localhost:4000/v1/drugs`
 
+#### NOTE
+To run the app without docker, you need to install @nestjs/cli globally, run ```npm install -g @nestjs/cli``` you need to install Mysql workbench and mysql and create a schema/db called temedica, run a ```yarn install``` and then ```yarn start:dev```
+
+I used mysql because mongodb does not have a proper query builder in nestjs
+
 ## TEST
 * Run ```yarn test:watch``` to run controller and service tests
 * Run ```yarn test:e2e``` to run e2e tests

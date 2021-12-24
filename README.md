@@ -60,7 +60,7 @@ Use the following commands
 
 And you can access this by going to `http://localhost:3000`
 
-## TEST 
+## TEST  
 I didn't have enough time to write tests on this
 
 I integrated with Apollo client from the frontend but I can also implement with REST and Redux.

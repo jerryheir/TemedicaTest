@@ -15,13 +15,36 @@ describe('ControllerTest (e2e)', () => {
     await app.init();
   }, 20000);
 
+  const postData = {
+    name: 'Lonart',
+    diseases: ['Malaria', 'Typhoid'],
+    description: 'This is generally caused by mosquito bites',
+    released: '22-12-2021',
+  };
+
+  const putData = {
+    name: 'Lomartem',
+  };
+
   it('/v1/drugs (GET)', () => {
     return request(app.getHttpServer()).get('/v1/drugs').expect(200);
   });
-  it('/v1/drugs (POST)', () => {
+  it('/v1/drugs no data (POST)', () => {
     return request(app.getHttpServer()).post('/v1/drugs').expect(400);
   });
-  it('/v1/drugs (PUT)', () => {
+  it('/v1/drugs no data (PUT)', () => {
     return request(app.getHttpServer()).put('/v1/drugs').expect(400);
+  });
+  it('/v1/drugs no data (POST)', () => {
+    return request(app.getHttpServer())
+      .post('/v1/drugs')
+      .send(postData)
+      .expect(200);
+  });
+  it('/v1/drugs no data (PUT)', () => {
+    return request(app.getHttpServer())
+      .put('/v1/drugs')
+      .send(putData)
+      .expect(400);
   });
 });

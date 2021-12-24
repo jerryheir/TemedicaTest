@@ -40,11 +40,13 @@ const Dashboard: React.FC = () => {
   return (
     <View style={styles.dashboardContainer}>
       <Image
+        testID="image"
         source={require('../images/logo.png')}
         style={styles.logoImage}
         resizeMode={'contain'}
       />
       <Input
+        testID="input"
         value={search}
         onChangeText={searchText}
         onSubmitEditing={() => {}}

@@ -5,11 +5,12 @@ interface InputProps {
   onSubmitEditing: () => any;
   value: string;
   onChangeText: (e: string) => any;
+  testID?: string;
 }
 
-const Input = ({onSubmitEditing, value, onChangeText}: InputProps) => {
+const Input = ({onSubmitEditing, value, onChangeText, testID}: InputProps) => {
   return (
-    <View style={styles.inputContainer}>
+    <View style={styles.inputContainer} testID={testID}>
       <TextInput
         placeholder={'You can search by name or disease'}
         placeholderTextColor={'#c0c0c0'}

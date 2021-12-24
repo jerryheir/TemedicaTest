@@ -1,0 +1,27 @@
+{
+  "testRunner": "jest",
+  "runnerConfig": "e2e/config.json",
+  "skipLegacyWorkersInjection": true,
+  "apps": {
+    "ios": {
+      "type": "ios.app",
+      "binaryPath": "SPECIFY_PATH_TO_YOUR_APP_BINARY"
+    }
+  },
+  "devices": {
+    "simulator": {
+      "type": "ios.simulator",
+      "device": {
+        "type": "iPhone 13"
+      }
+    }
+  },
+  "configurations": {
+    "ios": {
+      "binaryPath": "./ios/build/Products/Debug-iphonesimulator/tmobile.app",
+      "build": "xcodebuild -workspace ios/tmobile.xcworkspace -configuration debug -scheme tmobile -sdk iphonesimulator -derivedDataPath ios/build -UseModernBuildSystem=YES -arch x86_64",
+      "type": "ios.simulator",
+      "name": "iPhone 13"
+    }
+  }
+}
